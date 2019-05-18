@@ -48,7 +48,8 @@ public class FProfil extends javax.swing.JFrame {
          if(Nama.isEnabled()){
              if(!Nama.getText().isEmpty()){
                 st=koneksi.con.createStatement();
-                String sql="update tbl_petugas set NAMA_PETUGAS='"+Nama.getText()+"' where KD_PETUGAS='"+user_id+"'";
+                String sql="update tbl_petugas set NAMA_PETUGAS='"+Nama.getText()+"' "
+                        + "where KD_PETUGAS='"+user_id+"'";
                 st.executeUpdate(sql);
                 JOptionPane.showMessageDialog(null, "Nama Petugas Berhasil Di Perbaharui");
              }
@@ -58,18 +59,21 @@ public class FProfil extends javax.swing.JFrame {
          }    
          if(!Username.getText().isEmpty()){
              st=koneksi.con.createStatement();
-             String sql="update tbl_petugas set USERNAME_PETUGAS='"+Username.getText()+"' where KD_PETUGAS='"+user_id+"'";
+             String sql="update tbl_petugas set USERNAME_PETUGAS='"+Username.getText()+"' "
+                     + "where KD_PETUGAS='"+user_id+"'";
              st.executeUpdate(sql);
              JOptionPane.showMessageDialog(null, "Username Petugas Berhasil Di Perbaharui");
          }
          if(!NewPassword.getText().isEmpty()){
             st=koneksi.con.createStatement();
-            String Check="select PASSWORD_PETUGAS from tbl_petugas where PASSWORD_PETUGAS='"+OldPassword.getText()+"' and KD_PETUGAS='"+user_id+"'";
+            String Check="select PASSWORD_PETUGAS from tbl_petugas "
+                    + "where PASSWORD_PETUGAS='"+OldPassword.getText()+"' and KD_PETUGAS='"+user_id+"'";
             rs=st.executeQuery(Check);
             if(rs.next()){
                 if(NewPassword.getText().equals(ConfirmPassword.getText())){
                     st=koneksi.con.createStatement();
-                    String update_password="update tbl_petugas set PASSWORD_PETUGAS='"+NewPassword.getText()+"' where KD_PETUGAS='"+user_id+"'";
+                    String update_password="update tbl_petugas set "
+                            + "PASSWORD_PETUGAS='"+NewPassword.getText()+"' where KD_PETUGAS='"+user_id+"'";
                     st.executeUpdate(update_password);
                     JOptionPane.showMessageDialog(null, "Password Berhasil Di Perbaharui");
                 }
